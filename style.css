@@ -1,0 +1,48 @@
+body {
+    display: flex; 
+    flex-direction: column; 
+    text-align: center;      
+    background-color: #82f3f3;
+}
+
+.img-container {
+    display: flex; 
+    flex-direction: column; 
+    text-align: center;
+    height: 70%;
+    width: 70%;
+    justify-content: center;
+}
+
+.img {
+    max-width: 80%;
+    max-height: 80%;
+} 
+
+.like-btn {
+    color: rgb(255, 153, 0); 
+    border: none;
+    background-color: #82f3f3;
+    font-size: 36px;
+}
+
+.like-btn:hover {
+    color: rgb(255, 0, 0);
+    font-size: 36px;
+}
+
+.like-btn-checked {
+    color: rgb(255, 0, 0);
+    font-size: 36px;
+}
+
+.prev-btn {
+    width: 80px;
+    padding: 4px auto;
+    text-align: center;
+    color: rgb(11, 1, 70); 
+    border: none;
+    background-color: #0bb9b1;
+    font-size: 16px;
+    border-radius: 5px;
+}
