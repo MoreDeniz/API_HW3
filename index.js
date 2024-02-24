@@ -8,6 +8,8 @@ const likeBtn = document.querySelector(".like-btn");
 const prevBtn = document.querySelector(".prev-btn");
 
 let history = JSON.parse(localStorage.getItem("history")) || [];
+let liked = false;
+let likedPhotos = JSON.parse(localStorage.getItem("likedImages")) || [];
 
 // Получить данные с сервера
 async function getImagesFetch() {
@@ -45,9 +47,31 @@ async function getImagesFetch() {
         alert("No previous images");
       }
     });
+
+    // Если не лайк - удалить фото из списка
+    liked = likedPhotos.includes(photoURL);
+    changeLikeBtn();
   } catch (err) {
     throw err;
   }
 }
+
+// Смена вида сердечка при лайке
+function changeLikeBtn() {
+  likeBtn.textContent = liked ? "❤️️" : "♡";
+}
+
+likeBtn.addEventListener("click", () => {
+  liked = !liked;
+  changeLikeBtn();
+  if (liked) {
+    likesCounter.textContent = parseInt(likesCounter.textContent) + 1;
+    likedPhotos.push(photo.src);
+  } else {
+    likesCounter.textContent = parseInt(likesCounter.textContent) - 1;
+    likedPhotos.push(photo.src);
+  }
+  localStorage.setItem("likedPhotos", JSON.stringify(likedPhotos));
+});
 
 window.onload = getImagesFetch;
